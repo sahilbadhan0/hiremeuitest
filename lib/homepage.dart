@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hiremeuitest/commonTool.dart';
+import 'package:hiremeuitest/jobs.dart';
 import 'package:hiremeuitest/profilePage.dart';
 
 class HomePage extends StatefulWidget {
@@ -17,8 +18,6 @@ class _HomePageState extends State<HomePage> {
   Colors.blue,Colors.orange,Colors.pink,Colors.green,
   Colors.blue,Colors.orange,Colors.pink,Colors.green,];
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,16 +29,12 @@ class _HomePageState extends State<HomePage> {
             shrinkWrap: true,
             itemCount: categoryList.length,
             itemBuilder: (context,i){
-            return getGrid(iconData:categoryList[i],title:'titl$i',color: colorList[i]);
+            return getGrid(iconData:categoryList[i],title:'title$i',color: colorList[i]);
             }),
       ),
 
       bottomNavigationBar: getBottomBar(),
-      floatingActionButton: FloatingActionButton(onPressed: (){},
-        child: Icon(Icons.search,size: 30,),backgroundColor: Colors.deepPurpleAccent[400],
-        shape: OutlineInputBorder(borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(color:Colors.indigoAccent)),),
-
+      floatingActionButton: getFAB(context),
 
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
 
@@ -82,71 +77,58 @@ class _HomePageState extends State<HomePage> {
 
   getGrid({IconData iconData, String title,Color color}) {
     var size = 200.0;
-    return Container(
-      padding: EdgeInsets.all(8.0),
-      decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(15),
-    color: Colors.white,
-      ),
-      height: size, // Static for a while
-      width: size,
-
-      child: Column(
-    children: <Widget>[
-      Expanded(//Top Portion
-          flex: 3, child: Container(child:
-      Align(
-        alignment: Alignment.topLeft,
-          child: Icon(iconData,size: 45,color: color,)))),
-      Expanded(
-        flex: 2,
-        child: Container(
-          width: size - 10,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: Colors.grey[100],
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  title,
-                  style:
-                      TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                ),
-                Text(
-                  '8000+ jobs',
-                  style: TextStyle(color: Colors.grey[500]),
-                )
-              ],
+    return InkWell(
+      onTap:(){
+        Navigator.push(context,MaterialPageRoute(builder: (context)=>Jobs(title)));
+      },
+      child: Container(
+        padding: EdgeInsets.all(8.0),
+        decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(15),
+      color: Colors.white,
+        ),
+        height: size, // Static for a while
+        width: size,
+        child: Column(
+      children: <Widget>[
+        Expanded(//Top Portion
+            flex: 3, child: Container(child:
+        Align(
+          alignment: Alignment.topLeft,
+            child: Icon(iconData,size: 45,color: color,)))),
+        Expanded(
+          flex: 2,
+          child: Container(
+            width: size - 10,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.grey[100],
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    title,
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  Text(
+                    '8000+ jobs',
+                    style: TextStyle(color: Colors.grey[500]),
+                  )
+                ],
+              ),
             ),
           ),
+        )
+      ],
         ),
-      )
-    ],
       ),
     );
   }
-
-  getBottomBar(){
-    return new BottomNavigationBar(
-
-      
-      items: [
-        BottomNavigationBarItem(icon: Icon(Icons.home,color: Colors.indigoAccent,),title: Text('Home',style: TextStyle(color:Colors.indigoAccent,fontWeight: FontWeight.bold),)),
-        BottomNavigationBarItem(icon: Icon(Icons.chat,color:Colors.grey[400]),title: Text('Inbox',style: TextStyle(color:Colors.black,fontWeight: FontWeight.bold))),
-        BottomNavigationBarItem(icon: Icon(Icons.settings,color:Colors.grey[400]),title: Text('Setting',style: TextStyle(color:Colors.black,fontWeight: FontWeight.bold))),
-
-        BottomNavigationBarItem(icon: Icon(Icons.settings),title: Text('Setting')),
-
-      ],
-
-    );
-  }
-
-
 }
