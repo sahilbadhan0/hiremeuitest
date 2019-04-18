@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
             }),
       ),
 
-      bottomNavigationBar: getBottomBar(),
+      bottomNavigationBar: getCustomBottomBar(),
       floatingActionButton: getFAB(context),
 
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,

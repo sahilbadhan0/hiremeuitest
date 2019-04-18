@@ -50,7 +50,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
         ],
       ),
-      bottomNavigationBar: getBottomBar(),
+      bottomNavigationBar: getCustomBottomBar(),
       floatingActionButton: getFAB(context),
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
     );

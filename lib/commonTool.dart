@@ -22,6 +22,7 @@ getCircularProfilePic(double size) {
 
 getBottomBar() {
   return new BottomNavigationBar(
+
     items: [
       BottomNavigationBarItem(
           icon: Icon(
@@ -32,41 +33,45 @@ getBottomBar() {
             style: TextStyle(
                 color: Colors.indigoAccent, fontWeight: FontWeight.bold),
           )),
-      BottomNavigationBarItem(
-          icon: Icon(Icons.chat, color: Colors.grey[400]),
-          title: Text(
-            'Home',
-            style: TextStyle(
-                color: Colors.indigoAccent, fontWeight: FontWeight.bold),
-          )),
+        BottomNavigationBarItem(
+          backgroundColor: Colors.red,
+          title: Text('Help',style: TextStyle(color:Colors.blue,)),
+          icon: Icon(Icons.accessibility_new,color: Colors.blue,),
+        ),
+//      BottomNavigationBarItem(
+//          icon: Icon(Icons.chat, color: Colors.grey[400]),
+//          title: Text(
+//            'Chat',
+////            style: TextStyle(
+////                color: Colors.indigoAccent, fontWeight: FontWeight.bold),
+//          )),
       BottomNavigationBarItem(
           icon: Icon(Icons.settings, color: Colors.grey[400]),
           title: Text('Setting',
               style:
                   TextStyle(color: Colors.black, fontWeight: FontWeight.bold))),
       BottomNavigationBarItem(
-          icon: Icon(Icons.settings), title: Text('Setting')),
+          icon: Icon(Icons.settings), title: Text('nothing')),
     ],
   );
 
 }
 getCustomBottomBar(){
   return BottomAppBar(child:
-  Row(
-    children: <Widget>[
-
-          Icon(Icons.chat, color: Colors.grey[400]),
-
-
-         Icon(Icons.settings, color: Colors.grey[400]),
-
-
-
-
-         Icon(Icons.settings),
+  Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: Row(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: <Widget>[
+        Icon(Icons.home, color: Colors.blue),
+        Icon(Icons.chat, color: Colors.grey[400]),
+        Icon(Icons.settings,color: Colors.grey[400]),
+        SizedBox(width: 30,)
 
 
-    ],
+      ],
+    ),
   )
     ,);
 
