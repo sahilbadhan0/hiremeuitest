@@ -22,7 +22,7 @@ class _SearchPageState extends State<SearchPage>with SingleTickerProviderStateMi
             automaticallyImplyLeading: false,
             floating: true,
             pinned:  true,
-            expandedHeight: 200,
+            expandedHeight: 150,
             flexibleSpace: FlexibleSpaceBar(
               collapseMode: CollapseMode.pin,
               title: getSearchField(),

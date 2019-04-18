@@ -15,8 +15,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         buttonTheme: ButtonThemeData(
-          shape: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+          shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(20)),
+
           textTheme: ButtonTextTheme.normal
+        ),
+        textTheme:  TextTheme(
+
         )
       ),
       home: HomePage(),
